@@ -44,13 +44,23 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 220K
+  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 20K
   FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 64K
 }
 
 /* Sections */
 SECTIONS
 {
+/*
+	.flash_data :
+	{
+	. = ALIGN(4);
+	KEEP(*(.isr_vector)) 
+	*( .rodata.gImage_1) 
+	
+	} >FLASH
+	*/
+	
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {
